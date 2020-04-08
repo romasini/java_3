@@ -1,6 +1,7 @@
 package lesson5.homework5;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Car implements Runnable{
     private static int CARS_COUNT = 0;//количество машин
@@ -9,6 +10,7 @@ public class Car implements Runnable{
     private String name;
     private CountDownLatch prepareCDL;
     private CountDownLatch finishCDL;
+    private static AtomicBoolean winner = new AtomicBoolean(false);
 
     public String getName(){
         return name;
@@ -41,7 +43,8 @@ public class Car implements Runnable{
         for (int i = 0; i< race.getStages().size(); i++){
             race.getStages().get(i).go(this);
         }
-
+        if (winner.compareAndSet(false, true))
+            System.out.println(this.name+ " - WIN");
         finishCDL.countDown();
 
     }

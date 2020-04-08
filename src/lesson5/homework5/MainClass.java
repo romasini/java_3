@@ -5,9 +5,9 @@ import java.util.concurrent.CountDownLatch;
 public class MainClass {
     public static final int CARS_COUNT = 4;
     public static void main(String[] args){
-        CountDownLatch prepareCDL = new CountDownLatch(CARS_COUNT+1);//потоки машин + main поток
+        CountDownLatch prepareCDL = new CountDownLatch(CARS_COUNT);//потоки машин + main поток
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
-        prepareCDL.countDown();
+        //prepareCDL.countDown();
 
         Race race = new Race(
                 new Road(60),
