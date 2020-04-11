@@ -1,0 +1,6 @@
+апр 11, 2020 7:59:09 PM lesson6.logging.Example2Handlers tryToDivBy0
+SEVERE: Ошибка деления на ноль
+java.lang.ArithmeticException: / by zero
+	at lesson6.logging.Example2Handlers.tryToDivBy0(Example2Handlers.java:35)
+	at lesson6.logging.Example2Handlers.main(Example2Handlers.java:30)
+
