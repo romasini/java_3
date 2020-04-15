@@ -20,6 +20,7 @@ public class Example2Handlers {
 //             h = new StreamHandler();
 //             h = new MemoryHandler();
             System.out.println("Handlers");
+            System.out.println(logger.getHandlers().length);
             for (Handler o : logger.getHandlers()) {
                 System.out.println(o);
             }
