@@ -30,7 +30,7 @@ public class MyCalcTest {
 
     @Test(priority = 9)
     public void testDiv(){
-        MyJUnit.assertEquals(5, calc.div(10,2));
+        MyJUnit.assertEquals(5, calc.div(10,3));
     }
 
     @AfterSuite

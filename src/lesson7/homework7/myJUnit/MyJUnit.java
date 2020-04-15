@@ -1,6 +1,5 @@
 package lesson7.homework7.myJUnit;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -34,12 +33,12 @@ public class MyJUnit {
         if (countAfter>1) throw new RuntimeException("Слишком много AfterSuite");
         if (testMethods.size() <1) throw new RuntimeException("Нет тестов");
         
-        List <Method> sortedTestMethods = testMethods.stream().sorted(Comparator.comparingInt(method -> method.getAnnotation(Test.class).priority())).collect(Collectors.toList());
+        testMethods = testMethods.stream().sorted(Comparator.comparingInt(method -> method.getAnnotation(Test.class).priority())).collect(Collectors.toList());
         Object testObj = testClass.newInstance();
 
         if (countBefore>0) methodBefore.invoke(testObj);
 
-        for (Method testMethod: sortedTestMethods) {
+        for (Method testMethod: testMethods) {
             System.out.print("Тест " + testMethod.getName()+" приоритет " + testMethod.getAnnotation(Test.class).priority()+ " :");
             testMethod.invoke(testObj);
             System.out.println();
